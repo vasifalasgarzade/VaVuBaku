@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vasif\\Desktop\\VaVuBaku\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj": {}
+    "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vasif\\Desktop\\VaVuBaku\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj": {
+    "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vasif\\Desktop\\VaVuBaku\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
+        "projectUniqueName": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
         "projectName": "VaVuBaku",
-        "projectPath": "C:\\Users\\Vasif\\Desktop\\VaVuBaku\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
-        "packagesPath": "C:\\Users\\Vasif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vasif\\Desktop\\VaVuBaku\\VaVuBaku\\VaVuBaku\\obj\\",
+        "projectPath": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
+        "packagesPath": "C:\\Users\\orxan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Vasif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\orxan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,7 +38,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -60,6 +63,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.WindowsServices": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[13.10.5, )"
             }
           },
           "imports": [
@@ -80,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     }

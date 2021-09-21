@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using VaVuBaku.Data;
+using VaVuBaku.Models;
+using VaVuBaku.Repositories;
+using VaVuBaku.Repositories.Abstracts;
+using VaVuBaku.Repositories.Abstracts.Product;
 
 namespace VaVuBaku
 {
@@ -27,9 +31,15 @@ namespace VaVuBaku
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddSwaggerDocument();
             services.AddDbContext<VaVuDb>(options =>
-            options.UseSqlServer(
-         Configuration.GetConnectionString("Dbservice")));
+                                          options.UseSqlServer(
+                                          Configuration.GetConnectionString("Dbservice")));
+            services.AddDbContext<AdminContext>(a => a.UseSqlServer(Configuration.GetConnectionString(nameof(AdminContext))));
+            services.AddScoped<ITransactions<Product>, ProductsRepos>();
+            services.AddScoped<IProduct<Product>, ProductsRepos>();
+
 
         }
 
@@ -42,6 +52,9 @@ namespace VaVuBaku
             }
 
             app.UseRouting();
+
+            app.UseSwaggerUi3();
+            app.UseOpenApi();
 
             app.UseAuthorization();
 

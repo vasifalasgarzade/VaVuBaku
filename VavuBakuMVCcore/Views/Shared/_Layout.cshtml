@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <title>Vavu Baku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <link type="image/x-icon" href="~/images/Favicon/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-142494086-2');
+    </script>
+</head>
+<body>
+
+    <!-- Start preloader -->
+    <div id="preloader">
+    </div>
+    <!-- End preloader -->
+
+    <!--HEADER COMPONENT-->
+    @await Component.InvokeAsync("Header")
+    <!--HEADER COMPONENT-->
+
+    @RenderBody()
+
+    <div class="top-scrolling sticky">
+        <a href="#header" class="scrollTo"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    </div>
+
+    <!--<!--FOOTER COMPONENT-->-->
+    @await Component.InvokeAsync("Footer")
+    <!--FOOTER COMPONENT-->
+
+    <script data-cfasync="false" src="js/email-decode.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#book-form").submit(function (e) {
+                e.preventDefault();
+                //Book data
+                let book = {
+                    Name: $("#name").val().trim(),
+                    Phone: $("#phone").val(),
+                    Email: $("#email").val(),
+                    Count: $("#count").val(),
+                    BookDate: $("#date").val()
+                    
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SendRezerv", "Reservation")",
+                    data: book,
+                }).done(function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Rezervasiya tamamlandı!',
+                    })
+                    $("input").val("");
+                })
+                    .fail(function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Butun Xanalari Doldurun...',
+                        })
+                    });
+            })
+
+            $("#date").focus(function () {
+                this.type = "datetime-local";
+                this.focus();
+                $(this).val("2021-02-20T20:00");
+            })
+
+            $("#contact-message-form").submit(function (e) {
+                e.preventDefault();
+                
+                //Book data
+                let msg = {
+                    Phone: $("#contact-msg-phone").val(),
+                    Email: $("#contact-msg-email").val(),
+                    Subject: $("#contact-msg-subject").val(),
+                    Message: $("#contact-msg-txt").val().trim()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SendMessage", "Contact")",
+                    data: msg,
+                    
+                }).done(function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Mesaj göndərildi!',
+                        
+                    })
+                })
+                    .fail(function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Səhv!',
+                        })
+                    });
+            })
+
+            //input validator 
+            function inputValidate(formname) {
+                let inputs = $(`${formname} input`);
+                for (let i = 0; i < inputs.length - 1; i++) {
+                    let str = $(inputs[i]).val();
+                    if (!str || 0 === str.length) {
+
+                        $(`#${inputs[i].id} + span`).addClass("d-block");
+                    }
+                    else {
+                        $(`#${inputs[i].id} + span`).removeClass("d-block");
+                    }
+                }
+                if ($("textarea") != undefined && (!$("textarea").val() || 0 === $("textarea").val().length)) {
+
+                    $("textarea + span").addClass("d-block");
+                }
+                else {
+                    $("textarea + span").removeClass("d-block");
+                }
+            }
+
+            $("#btn-book").click(() => { inputValidate("#book-form"); });
+            $("#btn-contact-message").click(() => { inputValidate("#contact-message-form"); });
+        })
+
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

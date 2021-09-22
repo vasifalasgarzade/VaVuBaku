@@ -1,0 +1,203 @@
+﻿@using VavuBakuMVCcore.ViewModels
+@model HomeViewModel
+
+<section class="banner">
+    <div class="banner-carousel owl-carousel">
+        @foreach (var slide in Model.Sliders)
+        {
+            <div class="banner-slide-3 mb-5 container-fluid" style="background-image: url(/images/@slide.Photo );">
+                <div class="container">
+                    <div class="banner-box">
+                        <div class="banner-text">
+                            <div class="banner-center">
+                                <h2 class="banner-headding">@slide.Title</h2>
+                                <p class="banner-sub-hed">@slide.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="order-section ptb">
+    <div class="container">
+        <div class="row">
+            <div class="order-top"><img src="~/images/order-top.png" alt="layer"></div>
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-4 servose-box text-center padding-lf">
+                    <i class="fa fa-@service.Icon fa-5x"></i>
+                    <h2 class="order-title text-uppercase">@service.Title</h2>
+                    <p class="order-des">
+                        @service.Description
+                    </p>
+                </div>
+            }
+            <div class="order-bottom"><img src="~/images/order-bottom.png" alt="layer"></div>
+        </div>
+    </div>
+</section>
+
+<section class="speciality ptb pt-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="headding-part text-center pb-50">
+                    <p class="headding-sub">Vavu Baku</p>
+                    <h2 class="headding-title text-uppercase font-weight-bold">Kampaniyalar</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var campaign in Model.Campaigns)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-4 text-center speciality-box">
+                    <div class="speciality-img">
+                        <a href="shop-detail.html">
+                            <img src="~/images/@campaign.Photo"
+                                 alt="speciality" class="spec-image">
+                        </a>
+                    </div>
+                    <a href="#" class="ser-title text-uppercase font-weight-bold">@campaign.Title</a>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<section class="special-menu ptb pt-140">
+    <div class="container">
+        <div class="menu-top-bg"><img src="~/images/menu-top-bg.png" alt="meu-bg"></div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="headding-part text-center pb-50">
+                    <p class="headding-sub">Vavu Baku</p>
+                    <h2 class="headding-title text-uppercase font-weight-bold">Menyu</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="special-tab text-center">
+                    <ul id="tabs" class="nav nav-tabs" role="tablist">
+
+                        <li role="presentation" class="text-uppercase font-weight-bold tab-link current"
+                            data-tab="tab-1">
+                            <a href="#tab-1" role="tab" data-toggle="tab" class="active"> Hamısı</a>
+                        </li>
+
+                        @{int tabindex = 2;}
+                        @foreach (var category in Model.FoodCategories)
+                        {
+                            <li role="presentation" class="text-uppercase font-weight-bold tab-link" data-tab="tab-@tabindex ">
+                                <a href="#tab-@tabindex" role="tab" data-toggle="tab"> @category.Name</a>
+                            </li>
+                            tabindex++;
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div role="tabpanel" class="row pt-50 tab-pane fade in active show" id="tab-1">
+                @foreach (var food in Model.Foods.Take(8).ToList())
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-4 text-center pt-20">
+                        <div class="menu-img">
+                            <a asp-controller="Menu" asp-action="Index">
+                                <img src="~/images/@food.Photo" alt="@food.Name"
+                                     class="menu-image">
+                            </a>
+                        </div>
+                        <a asp-controller="Menu" asp-action="Index" class="menu-title text-uppercase">@food.Name</a>
+                        <p class="menu-des">
+                            @food.Description.
+                        </p>
+                        <span class="menu-price">&#8380; @food.Price</span>
+                    </div>
+                }
+            </div>
+
+            @{tabindex = 2;}
+            @foreach (var category in Model.FoodCategories)
+            {
+
+                <div role="tabpanel" class="row pt-70 tab-pane fade" id="tab-@tabindex">
+
+                    @foreach (var food in Model.Foods)
+                    {
+                        <div class="col-xl-3 col-lg-3 col-md-4 text-center pt-20">
+                            <div class="menu-img">
+                                <a asp-controller="Menu" asp-action="Index">
+                                    <img src="~/images/@food.Photo" alt="@food.Name"
+                                         class="menu-image">
+                                </a>
+                            </div>
+                            <a asp-controller="Menu" asp-action="Index" class="menu-title text-uppercase">@food.Name</a>
+                            <p class="menu-des">
+                                @food.Description.
+                            </p>
+                            <span class="menu-price"> &#8380; @food.Price </span>
+                        </div>
+                    }
+                    @{tabindex++;}
+                </div>
+            }
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+                    <a class="com-btn" asp-action="Index" asp-controller="Menu">Daha Çox</a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-bottom-bg"><img src="~/images/menu-bottom-bg.png" alt="menu-bg"></div>
+    </div>
+</section>
+
+@*BOOK COMPONENT*@
+    @await Component.InvokeAsync("Book")
+  @*BOOK COMPONENT*@
+
+
+<!--CHEF COMPONENT-->
+@await Component.InvokeAsync("Chef")
+<!--CHEF COMPONENT-->
+
+
+<section class="news ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="headding-part pb-50 text-center">
+                    <p class="headding-sub">Vavu Baku</p>
+                    <h2 class="headding-title text-uppercase font-weight-bold">Son Fəaliyyətlərimiz</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var activity in Model.Activ)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-4 news-part">
+                    <div class="new-box">
+                        <div class="news-img">
+                            <a href="#">
+                                <img src="~/images/@activity.Photo" alt="@activity.Title" class="news-image" height="280">
+                            </a>
+                            <div class="text-uppercase news-date">
+                                <span>
+                                    @activity.ActivityDate.Day<br>@activity.ActivityDate.ToString("MMMM")
+                                </span>
+                            </div>
+                            <span class="news-date-bg"></span>
+                        </div>
+                        <a href="#" class="news-headline mt-4">
+                            @activity.Title
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

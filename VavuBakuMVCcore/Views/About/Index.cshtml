@@ -1,0 +1,44 @@
+﻿@model About
+
+<section class="page-banner" style="background: #121619 url(/images/blog-7.jpg) no-repeat center/cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="page-title">
+                    <h1 class="page-headding">About Us</h1>
+                    <ul>
+                        <li><a class="page-name" asp-controller="Home" asp-action="Index">Əsas Səhifə</a></li>
+                        <li>Haqqımızda</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section pt-100">
+    <div class="container">
+        <div class="row flex-center">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="about-img"><img src="~/uploads/@Model.Photo" alt="@Model.Title"></div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="about-text">
+                    <div class="headding-part">
+                        <p class="headding-sub">Vavu Baku</p>
+                        <h2 class="headding-title text-uppercase font-weight-bold">@Model.Title</h2>
+                    </div>
+                    <div class="about-desc">
+                        <p class="desc-about">
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--BOOK COMPONENT-->
+@await Component.InvokeAsync("Book")
+<!--BOOK COMPONENT-->

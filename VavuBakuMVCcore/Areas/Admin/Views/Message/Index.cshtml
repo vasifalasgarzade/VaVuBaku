@@ -1,0 +1,21 @@
+﻿@model List<ContactMessage>
+
+
+<div class="row">
+    @foreach (var message in Model)
+    {
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-3">
+            <div class="card" style="width:100%; background-color:#4e73df">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-white">@message.Subject</h5>
+                </div>
+                <ul class="list-group list-group-flush bg-light">
+                    <li class="list-group-item">@message.Email</li>
+                    <li class="list-group-item">@message.Phone</li>
+                    <li class="list-group-item">@message.Message</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+

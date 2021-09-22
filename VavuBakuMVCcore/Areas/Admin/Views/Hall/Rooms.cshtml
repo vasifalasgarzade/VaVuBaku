@@ -1,0 +1,17 @@
+﻿@model List<Room>
+
+<div class="row up-halls hall-room-buttons">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <button class="btn btn-outline-primary w-25 exit-button"><i class="fas fa-arrow-left w-100 fa-3x"></i></button>
+    </div>
+    @foreach (var uphall in Model)
+    {
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+            <a asp-controller="Hall" asp-action="Orders" class="no-underline">
+                <div class="p-3 up-hall-buttons hlfo">
+                    <h2>@uphall.Name</h2>
+                </div>
+            </a>
+        </div>
+    }
+</div>

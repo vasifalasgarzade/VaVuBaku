@@ -1,0 +1,85 @@
+﻿@using VavuBakuMVCcore.ViewModels
+@model MenuViewModel
+
+<section class="page-banner" style="background: #121619 url(images/menu-banner-1.png) no-repeat center / ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="page-title">
+                    <h1 class="page-headding">Yemək Menyusu</h1>
+                    <ul>
+                        <li><a class="page-name" asp-action="Index" asp-controller="Home">Əsas Səhifə</a></li>
+                        <li>Menyu</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="menu-list pt-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="menu-tabbing">
+                    <ul id="tabs" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="tab-link current" data-tab="tab-1"><a href="#tab-1" role="tab" data-toggle="tab" class="active">Hamısı</a></li>
+
+                        @{int tabIndex = 2;}
+                        @foreach (var category in Model.FoodCategories)
+                        {
+                            <li role="presentation" class="tab-link" data-tab="tab-@tabIndex"><a href="#tab-@tabIndex" role="tab" data-toggle="tab">@category.Name</a></li>
+                            tabIndex++;
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div role="tabpanel" class="row tab-pane fade in active show" id="tab-1">
+                @foreach (var food in Model.Foods)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="menu-list-box">
+                            <div class="list-img"><a href="#"><img src="~/images/@food.Photo" alt="@food.Name" height="200"></a></div>
+                            <div class="menu-detail">
+                                <a asp-controller="Menu" asp-action="Index" class="iteam-name">@food.Name </a>
+                                <p class="iteam-desc">@food.Description.</p>
+                                <span class="menu-price"> &#8380; @food.Price </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @{tabIndex = 2;}
+            @foreach (var category in Model.FoodCategories)
+            {
+
+                <div role="tabpanel" class="row tab-pane fade" id="tab-@tabIndex">
+                    @foreach (var food in category.Foods)
+                    {
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="menu-list-box">
+                                <div class="list-img"><a href="#"><img src="~/images/@food.Photo" alt="@food.Name" height="200"></a></div>
+                                <div class="menu-detail">
+                                    <a asp-controller="Menu" asp-action="Index" class="iteam-name">@food.Name</a>
+                                    <p class="iteam-desc">@food.Description.</p>
+                                    <span class="menu-price"> &#8380; @food.Price </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                tabIndex++;
+            }
+        </div>
+    </div>
+</section>
+
+<!--CHEF COMPONENT-->
+@await Component.InvokeAsync("Chef")
+<!--CHEF COMPONENT-->
+
+<!--BOOK COMPONENT-->
+@await Component.InvokeAsync("Book")
+<!--BOOK COMPONENT-->

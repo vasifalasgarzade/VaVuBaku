@@ -1,0 +1,66 @@
+﻿@using VavuBakuMVCcore.ViewModels
+@model LayoutViewModel
+
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
+                        <div class="footer-logo">
+                            <img src="~/images/@Model.Setting.Logo" alt="Vavu Baku Logo">
+                            <p class="footer-des">
+                                @Model.Setting.Address
+                            </p>
+                            <ul>
+                                <li>telefon - <a href="tel:@Model.Setting.Phone">@Model.Setting.Phone</a></li>
+                                <li>
+                                    email - <a href="mailto:@Model.Setting.Email">
+                                        <span class="__cf_email__">@Model.Setting.Email</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
+                        <div class="opening-hours">
+                            <h2>İş Saatları</h2>
+                            <ul>
+                                <li>Hər gün : <span>11:00 - 00:00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
+                        <div class="useful-links">
+                            <h2>useful links</h2>
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="Blog">Blog</a></li>
+                                <li><a asp-action="Index" asp-controller="Reservation">Rezervasiya</a></li>
+                                <li><a asp-action="Index" asp-controller="About">Haqqımızda</a></li>
+                                <li><a asp-action="Index" asp-controller="Contact">Əlaqə</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
+                        <p class="copy-text">
+                            © Vavu - bütün hüquqlar qorunur.
+                        </p>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
+                        <ul>
+                            @foreach (var media in Model.SocialMedias)
+                            {
+                                <li><a href="@media.Link" target="_blank"><i class="fa fa-@media.Icon" aria-hidden="true"></i></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

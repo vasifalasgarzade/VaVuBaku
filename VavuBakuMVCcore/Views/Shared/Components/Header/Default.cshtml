@@ -1,0 +1,110 @@
+﻿@using VavuBakuMVCcore.ViewModels
+@model LayoutViewModel
+
+<header id="header">
+    <div class="container">
+        <div class="row m-0">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-3 p-0">
+                <div class="navbar-header">
+                    <a class="navbar-brand page-scroll" asp-action="Index" asp-controller="Home">
+                        <img alt="Vavu" src="~/images/@Model.Setting.Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-9">
+                <div id="menu" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="level">
+                            <a class="page-scroll" asp-action="Index" asp-controller="Home">Əsas səhifə</a>
+                        </li>
+                        <li class="level dropdown set">
+                            <a class="page-scroll" asp-action="Index" asp-controller="Menu">Menyu</a>
+                            <span class="opener plus"></span>
+                            <div class="megamenu mobile-sub-menu content megamenu-big">
+                                <div class="megamenu-inner-top">
+                                    <ul class="sub-menu-level1">
+                                        <li class="level2 menu-list-d">
+                                            <div class="row">
+                                                <div class="col-xl-9 col-lg-9 col-md-9">
+                                                    <div class="row">
+                                                        @foreach (var food in Model.Foods.Take(6))
+                                                        {
+                                                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                                                <div class="menu-grid">
+                                                                    <a href="#" class="menu-grid-center">
+                                                                        <div class="pizza-menu">
+                                                                            <img src="~/images/@food.Photo" alt="@food.Name">
+                                                                        </div>
+                                                                        <div class="pizza-det">
+                                                                            <p class="Pizza-name-1">@food.Name</p>
+                                                                            <span class="pizza-price-1">&#8380; @food.Price</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3 col-md-3">
+                                                    <ul>
+                                                        <li><a asp-action="Index" asp-controller="Menu">Menu list</a></li>
+                                                        <li><a asp-action="Index" asp-controller="Menu">Menu grid</a></li>
+                                                        <li><a href="#">Special Pizza</a></li>
+                                                        <li><a href="#">All pizza</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="level2 level2 menu-list-res">
+                                            <ul class="sub-menu-level2 ">
+                                                <li class="level3">
+                                                    <a asp-action="Index" asp-controller="Menu"><span>■</span>Menu list</a>
+                                                </li>
+                                                <li class="level3">
+                                                    <a asp-action="Index" asp-controller="Menu"><span>■</span>Menu grid</a>
+                                                </li>
+                                                <li class="level3"><a href="#"><span>■</span>Special Pizza</a></li>
+                                                <li class="level3"><a href="#"><span>■</span>All pizza</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="level">
+                            <a class="page-scroll" asp-action="Index" asp-controller="Blog">Blog</a>
+                        </li>
+                        <li class="level">
+                            <a class="page-scroll" asp-action="Index" asp-controller="Reservation">Rezervasiya</a>
+                        </li>
+                        <li class="level">
+                            <a class="page-scroll" asp-action="Index" asp-controller="About">Haqqımızda</a>
+                        </li>
+                        <li class="level">
+                            <a class="page-scroll" asp-action="Index" asp-controller="Contact">Əlaqə</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class=" header-right-link">
+                    <ul>
+                        <li class="call-icon">
+                            <a href="tel:@Model.Setting.Phone">
+                                <span class="icon"></span>
+                                <div class="link-text">@Model.Setting.Phone</div>
+                            </a>
+                        </li>
+                        <li class="order-online">
+                            <a asp-controller="Reservation" asp-action="Index" class="btn btn-green">Rezervasiya</a>
+                        </li>
+                        <li class="side-toggle">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                                    type="button">
+                                <span></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

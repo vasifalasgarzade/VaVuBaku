@@ -173,11 +173,23 @@ namespace VaVuBaku.Migrations.Admin
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Deposit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsEmpty")
+                        .HasColumnType("int");
+
                     b.Property<int>("IsOpen")
                         .HasColumnType("int");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

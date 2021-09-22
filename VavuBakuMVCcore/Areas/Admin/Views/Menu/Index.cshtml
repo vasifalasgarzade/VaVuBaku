@@ -1,0 +1,18 @@
+﻿@model List<FoodCategory>
+
+
+<div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <ul id="sortable" class="w-100">
+            @foreach (var category in Model)
+            {
+                <li class="ui-state-default mt-2" data-id="@category.Order">@category.Name </li>
+            }
+        </ul>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2 w-100" id="btn-category-order">Yadda saxla</button>
+        </div>
+    </div>
+</div>
+
+

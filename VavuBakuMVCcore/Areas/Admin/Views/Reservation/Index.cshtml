@@ -1,0 +1,23 @@
+﻿@model List<Book>
+
+
+<div class="row">
+    @foreach (var book in Model.OrderByDescending(x=>x.Id))
+    {
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12  mt-3">
+            <div class="card" style="width:100%; background-color:#4e73df">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-white">@book.BookDate.ToString("dd MMMM HH:mm") 
+                                          <span class="text-gray-300">(@book.Count nəfər)</span>
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush bg-light">
+                    <li class="list-group-item"><span class="text-dark">Email: </span> @book.Email</li>
+                    <li class="list-group-item"><span class="text-dark">Tel: </span> @book.Phone</li>
+                    <li class="list-group-item"><span class="text-dark">Ad: </span>@book.Name</li>
+                    <li class="list-group-item"><span class="text-dark">Tarix: </span>@book.Date.ToString("dd MMMM HH:mm")</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>

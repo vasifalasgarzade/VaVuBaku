@@ -1,0 +1,28 @@
+﻿@model List<Chef>
+
+<section class="chef ptb pt-120 pb-120">
+    <div class="chef-top-bg"><img src="~/images/chef-top-bg.png" alt="chef-bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="headding-part pb-50 text-center">
+                    <p class="headding-sub">Vavu Baku</p>
+                    <h2 class="headding-title text-uppercase font-weight-bold">Bizim İşçilərimiz</h2>
+                </div>
+            </div>
+        </div>
+        <div class="chef-banner owl-carousel">
+            @foreach (var chef in Model)
+            {
+                <div class="chef-outer text-center">
+                    <div class="chef-box">
+                        <div class="chef-hover"><img src="~/images/@chef.Photo" alt="@chef.Name" class="chef-img" height="300"></div>
+                        <p class="chef-name text-uppercase font-weight-bold">@chef.Name</p>
+                        <span class="chef-ct">@chef.Role</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="chef-bottom-bg"><img src="~/images/chef-bottom-bg.png" alt="chef-bg"></div>
+</section>

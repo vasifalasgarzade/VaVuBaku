@@ -1,0 +1,53 @@
+﻿@model Setting
+
+<section class="online-booking ptb" id="booking-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="max-w-390">
+                    <div class="headding-part">
+                        <p class="headding-sub">Vavu Baku</p>
+                        <h2 class="headding-title text-uppercase font-weight-bold">Online Rezervasiya</h2>
+                    </div>
+                    <p class="online-des">
+                        Online rezervasiyanızı buradan rahat şəkildə edə bilərsiniz.
+                    </p>
+                    <a href="tel:@Model.Phone" class="online-call">@Model.Phone</a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 text-center">
+                <h2 class="book-table text-uppercase">Rezervasiya Edin</h2>
+                <form class="online-order-form" method="post" id="book-form">
+                    <div class="form-group">
+                        <input  type="text" class="form-control" id="name" placeholder="Ad"  name="Name">
+                        <span class="validation-span d-none">Bu sahə boş buraxıla bilməz!</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="phone" placeholder="Əlaqə nömrəsi"  name="Phone">
+                        <span class="validation-span d-none">Bu sahə boş buraxıla bilməz!</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Mail"  name="Email">
+                        <span class="validation-span d-none">Bu sahə boş buraxıla bilməz!</span>
+                    </div>
+                    <div class="form-group">
+                        <select name="Count" id="count" class="custom-select sources form-control"
+                                data-placeholder="6 Nəfər">
+                            <option value="6" selected>6 Nəfər</option>
+                            <option value="5">5 Nəfər</option>
+                            <option value="4">4 Nəfər</option>
+                            <option value="3">3 Nəfər</option>
+                            <option value="2">2 Nəfər</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="date" name="BookDate" placeholder="Tarix">
+                        <span class="validation-span d-none">Bu sahə boş buraxıla bilməz!</span>
+                    </div>
+
+                    <button type="submit" class="more-table-v" id="btn-book">Rezervasiya Et</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

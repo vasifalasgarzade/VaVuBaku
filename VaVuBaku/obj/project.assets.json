@@ -8790,19 +8790,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\orxan\\.nuget\\packages\\": {}
+    "C:\\Users\\Vasif\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
+      "projectUniqueName": "C:\\Users\\Vasif\\Desktop\\New folder\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
       "projectName": "VaVuBaku",
-      "projectPath": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
-      "packagesPath": "C:\\Users\\orxan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\orxan\\source\\repos\\VaVuBaku\\VaVuBaku\\obj\\",
+      "projectPath": "C:\\Users\\Vasif\\Desktop\\New folder\\VaVuBaku\\VaVuBaku\\VaVuBaku.csproj",
+      "packagesPath": "C:\\Users\\Vasif\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vasif\\Desktop\\New folder\\VaVuBaku\\VaVuBaku\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\orxan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Vasif\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8814,7 +8818,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8826,7 +8829,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Mapster": {
             "target": "Package",
@@ -8879,7 +8881,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
